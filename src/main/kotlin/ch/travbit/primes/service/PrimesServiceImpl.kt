@@ -1,19 +1,16 @@
 package ch.travbit.primes.service
 
+import ch.travbit.primes.calculator.PrimeCalculator
 import org.springframework.stereotype.Service
 import java.math.BigInteger
-import kotlin.random.Random
-import kotlin.random.asJavaRandom
 
 /**
  * This class represents a service to generate probable primes.
  */
 @Service
-class PrimesServiceImpl : IPrimesService {
-
-    private val random = Random.Default.asJavaRandom()
+class PrimesServiceImpl constructor(private val primeCalculator: PrimeCalculator) : IPrimesService {
 
     override fun probablePrime(bitLength: Int): BigInteger {
-        return BigInteger.probablePrime(bitLength, random)
+        return primeCalculator.probablePrimeWithBitlength(bitLength)
     }
 }
