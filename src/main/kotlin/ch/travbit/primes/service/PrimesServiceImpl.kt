@@ -11,6 +11,6 @@ import java.math.BigInteger
 class PrimesServiceImpl constructor(private val primeCalculator: PrimeCalculator) : IPrimesService {
 
     override fun probablePrime(bitLength: Int): BigInteger {
-        return primeCalculator.probablePrimeWithBitlength(bitLength)
+        return primeCalculator.probablePrimeWithBitLength(bitLength)
     }
 }

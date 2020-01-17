@@ -11,14 +11,14 @@ class CalculatorTest {
     @Test
     fun probablePrimeWithBitLength_WorkingBitLength_PrimeHasBitLength() {
         val bitLen = 16
-        val probablePrime = calculator.probablePrimeWithBitlength(bitLen)
+        val probablePrime = calculator.probablePrimeWithBitLength(bitLen)
         Assertions.assertEquals(bitLen, probablePrime.bitLength())
     }
 
     @Test
     fun probablePrimeWithBitLength_TooLowBitLength_Exception() {
         val tooLowBitLen = 1
-        assertThrows<ArithmeticException> { calculator.probablePrimeWithBitlength(tooLowBitLen) }
+        assertThrows<ArithmeticException> { calculator.probablePrimeWithBitLength(tooLowBitLen) }
     }
 
     @Test
@@ -27,6 +27,6 @@ class CalculatorTest {
         * There is constant that defines an upper limit for the bit length of a probable prime number in BigInteger
          */
         val tooHighBitLen = 1_000_000_000
-        assertThrows<ArithmeticException> { calculator.probablePrimeWithBitlength(tooHighBitLen) }
+        assertThrows<ArithmeticException> { calculator.probablePrimeWithBitLength(tooHighBitLen) }
     }
 }

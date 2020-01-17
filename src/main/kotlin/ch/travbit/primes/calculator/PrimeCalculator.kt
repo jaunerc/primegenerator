@@ -10,7 +10,7 @@ class PrimeCalculator {
         val random = Random.Default.asJavaRandom()
     }
 
-    fun probablePrimeWithBitlength(bitLength: Int): BigInteger {
+    fun probablePrimeWithBitLength(bitLength: Int): BigInteger {
         return BigInteger.probablePrime(bitLength, random)
     }
 }
