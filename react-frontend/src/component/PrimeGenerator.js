@@ -1,6 +1,13 @@
 import React from 'react'
+import {baseUrl} from "../Globals";
+
+/**
+ * Url to the backend system
+ */
+const URL = baseUrl + '/probable-prime?bitLength=';
 
 class PrimeGenerator extends React.Component {
+
     constructor(props) {
         super(props);
         this.state = {
@@ -22,7 +29,7 @@ class PrimeGenerator extends React.Component {
     }
 
     randomPrimeFromBackend(bitLength) {
-        fetch('http://localhost:8080/api/probable-prime?bitLength=' + bitLength)
+        fetch(URL + bitLength)
             .then(res => res.text())
             .then(data => {
                 this.setState({
