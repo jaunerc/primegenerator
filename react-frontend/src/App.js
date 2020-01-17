@@ -4,7 +4,7 @@ import PrimeGenerator from "./component/PrimeGenerator";
 
 function App() {
     return (
-        <div className="App">
+        <div className="container">
             <PrimeGenerator/>
         </div>
     );
