@@ -3,7 +3,10 @@ import React from 'react'
 class PrimeGenerator extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {bitLength: ""};
+        this.state = {
+            bitLength: "",
+            prime: ""
+        };
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -14,26 +17,45 @@ class PrimeGenerator extends React.Component {
     }
 
     handleSubmit(event) {
-        alert("submitted bit length: " + this.state.bitLength);
+        this.randomPrimeFromBackend(this.state.bitLength);
+        event.preventDefault();
+    }
+
+    randomPrimeFromBackend(bitLength) {
+        fetch('http://localhost:8080/api/probable-prime?bitLength=' + bitLength)
+            .then(res => res.text())
+            .then(data => {
+                this.setState({
+                    prime: data
+                })
+            })
+            .catch(console.log)
     }
 
     render() {
         return (
-            <div>
-                <h2>Prime Generator</h2>
-                <p>Requests a number from the backend that is probable prime</p>
-                <textarea rows="4" readOnly>
-                    No number so far...
-                </textarea>
-                <form onSubmit={this.handleSubmit}>
-                    <label>
-                        <input type="text" value={this.state.bitLength} onChange={this.handleChange}/>
-                    </label>
-                    <input type="submit" value="Random Prime"/>
-                </form>
+            <div className="row">
+                <div className="col-md-8 offset-md-2">
+                    <h2>Prime Generator</h2>
+                    <p>Requests a random number from the backend that is probable prime</p>
+                    <form onSubmit={this.handleSubmit}>
+                        <div>
+                            <label htmlFor="bitLength">Bit Length:</label>
+                            <input type="text" value={this.state.bitLength} onChange={this.handleChange} id="bitLength"
+                                   className="form-control w-25" placeholder="32"/>
+                        </div>
+                        <div>
+                            <label htmlFor="prime">Prime number:</label>
+                            <textarea className="form-control" rows="5" id="prime" value={this.state.prime} readOnly/>
+                        </div>
+                        <br/>
+                        <input type="submit" value="Request random prime" className="btn btn-primary"/>
+                    </form>
+                </div>
             </div>
         )
     }
 }
+
 
 export default PrimeGenerator
