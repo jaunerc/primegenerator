@@ -7,3 +7,8 @@ This project needs `Docker` and `Docker-Compose` if you want to use containers o
 
 ## Run with Docker
 The project can be executed by one single command `docker-compose up`.
+
+The frontend apps are accessible through
+ * React: http://localhost:3000
+ * Angular: http://localhost:4000
+ 
