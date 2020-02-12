@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col-md-8 offset-md-2">
+    <h1>Prime Generator</h1>
+    <p>Requests a random number from the backend that is probable prime</p>
+    <form [formGroup]="primeForm" (ngSubmit)="onSubmit()">
+      <div>
+        <label>BitLength:</label><br>
+        <input type="text" class="form-control w-25" placeholder="32" formControlName="bitLength" value="32"/>
+      </div>
+      <div>
+        <label>Prime number:</label><br>
+        <textarea class="form-control" rows="5" readonly formControlName="primeNumber"></textarea><br>
+        <input type="submit" value="Request random prime" class="btn btn-primary"/>
+      </div>
+    </form>
+  </div>
+</div>
