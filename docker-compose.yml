@@ -11,4 +11,10 @@ services:
       context: ./react-frontend
       dockerfile: ./Dockerfile
     ports:
-      - "80:80"
+      - "3000:80"
+  frontend-angular:
+    build:
+      context: ./angular-frontend
+      dockerfile: ./Dockerfile
+    ports:
+      - "4000:80"
